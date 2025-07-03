@@ -1,0 +1,47 @@
+table {
+  width: 100%;
+  min-width: 900px;
+  background: #D2C1B6;
+}
+.table-container {
+  max-height: 80vh;
+  overflow-y: auto;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  min-width: 1000px
+}
+.dashboard {
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 10px;
+  background: #D2C1B6;
+}
+mat-paginator {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background: #D2C1B6;
+  border-top: 1px solid black;
+}
+mat-toolbar {
+  background: #D2C1B6;
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-toolbar button{
+  color: rgb(227, 19, 19);
+}
+.search-bar{
+  width: 100%;
+  display: flex;
+  background: #D2C1B6;
+
+}
+.search-bar .mat-form-field-flex {
+  background-color: #D2C1B6; /* light blue or any color you want */
+  border-radius: 4px;
+}
+
+.search-bar .mat-input-element {
+  background-color: transparent; /* input field itself */
+}

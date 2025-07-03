@@ -1,0 +1,65 @@
+<div id="form-container">
+  <h2>@if (mode === 'signup') { Sign Up } @else { Log In }</h2>
+  @if (isSubmitting) {
+  <div class="spinner">
+    <mat-progress-spinner
+      class="spinner"
+      diameter="20"
+      mode="indeterminate"
+      color="accent"
+    ></mat-progress-spinner>
+  </div>
+  }@else {
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-inputs">
+      <mat-form-field class="form-field" floatLabel="always">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="email" />
+        @if (email?.invalid && (email?.dirty || email?.touched)) {
+        <mat-error>{{ errorMessage("email") }}</mat-error>
+        }
+      </mat-form-field>
+      @if(mode === 'signup'){
+      <mat-form-field floatLabel="always">
+        <mat-label>Full name</mat-label>
+        <input matInput placeholder="full name" formControlName="fullname" />
+        @if (fullname?.invalid && (fullname?.dirty || fullname?.touched)) {
+        <mat-error>{{ errorMessage("fullname") }}</mat-error>
+        }
+      </mat-form-field>
+      }
+      <mat-form-field floatLabel="always">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="password"
+          formControlName="password"
+          type="password"
+        />
+        @if (password?.invalid && (password?.dirty || password?.touched)) {
+        <mat-error>{{ errorMessage("password") }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <button
+      class="submit-btn"
+      mat-raised-button
+      type="submit"
+      [disabled]="!userForm.valid || isSubmitting"
+    >
+      @if (mode === 'signup') { Sign Up } @else { Login }
+    </button>
+  </form>
+  }
+
+  <div class="mode-div">
+    @if (mode === 'signup') {
+    <p>Already have an account?</p>
+    <a (click)="toggleMode('login')">Log In</a>
+    } @else {
+    <p>Don't have an account?</p>
+    <a (click)="toggleMode('signup')">Register</a>
+    }
+  </div>
+</div>
